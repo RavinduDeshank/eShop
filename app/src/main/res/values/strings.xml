@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">eShop</string>
+    <string name="Name">eShop</string>
+    <string name="moto">Makes Things Easy</string>
+    <string name="Alredy">Already have an Account? Login</string>
+    <string name="join">Join Now</string>
+    <string name="phoneNum">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="remember">Remember me</string>
+    <string name="fotgetpw">Forget Password ?</string>
+    <string name="login">Login</string>
+    <string name="admin">Admin</string>
+    <string name="admin2">Not Admin</string>
+    <string name="register">Create Account</string>
+    <string name="EnterName">Enter Your Name</string>
+</resources>
