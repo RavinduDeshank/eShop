@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eshop.Model.Users;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity {
     private EditText InputPhoneNum,InputPassword;
     private Button Loginbtn;
     private ProgressDialog loadingBar;
+    private TextView AdminLink,NotAdmin;
 
     private String parentDbName = "Users";
     private CheckBox chBoxRememberMe;
@@ -40,6 +42,9 @@ public class Login extends AppCompatActivity {
         Loginbtn = (Button)findViewById(R.id.login_btn);
         InputPhoneNum = (EditText)findViewById(R.id.login_phone_number);
         InputPassword = (EditText)findViewById(R.id.login_password_input);
+        AdminLink = (TextView)findViewById(R.id.admin_panel_link);
+        NotAdmin = (TextView)findViewById(R.id.not_admin_panel_link);
+
         loadingBar = new ProgressDialog(this);
 
         chBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
@@ -49,6 +54,24 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LoginUser();
+            }
+        });
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Loginbtn.setText("Login Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                NotAdmin.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+            }
+        });
+        NotAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Loginbtn.setText("Login");
+                AdminLink.setVisibility(View.VISIBLE);
+                NotAdmin.setVisibility(View.INVISIBLE);
+                parentDbName = "Users";
             }
         });
     }
@@ -95,11 +118,24 @@ public class Login extends AppCompatActivity {
                     if(userData.getPhone().equals(phoneNum)){
 
                         if(userData.getPassword().equals(password)){
-                            Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
 
-                            Intent intent = new Intent(Login.this, Home .class);
-                            startActivity(intent);
+                            if (parentDbName.equals("Admins")){
+
+                                Toast.makeText(Login.this,"Welcome Admin",Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent = new Intent(Login.this, AdminCategory.class);
+                                startActivity(intent);
+
+                            }else if(parentDbName.equals("Users")){
+
+                                Toast.makeText(Login.this,"Welcome to eShop",Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent = new Intent(Login.this, Home.class);
+                                startActivity(intent);
+                            }
+
                         }else{
 
                             loadingBar.dismiss();

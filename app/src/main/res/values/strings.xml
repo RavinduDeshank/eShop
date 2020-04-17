@@ -13,4 +13,10 @@
     <string name="admin2">Not Admin</string>
     <string name="register">Create Account</string>
     <string name="EnterName">Enter Your Name</string>
+    <string name="ProName">Product Name</string>
+    <string name="Discriptin">Product Description</string>
+    <string name="ProPrice">Product Price</string>
+    <string name="addPro">Add Product</string>
+    <string name="AddNewPro">Add New Product</string>
+
 </resources>

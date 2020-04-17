@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     if(userData.getPhone().equals(phoneNum)){
 
                         if(userData.getPassword().equals(password)){
-                            Toast.makeText(MainActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"Welcome...",Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, Home .class);
