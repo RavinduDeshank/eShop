@@ -10,13 +10,12 @@ import android.widget.Button;
 import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity {
-
     private Button LogoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home2);
 
         LogoutBtn = (Button) findViewById(R.id.logout_btn);
 

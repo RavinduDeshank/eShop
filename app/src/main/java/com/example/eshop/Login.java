@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
          }
          else{
 
-             loadingBar.setTitle("Create Account");
+             loadingBar.setTitle("Login");
              loadingBar.setMessage("Please wait, While we are cheking the credentials");
              loadingBar.setCanceledOnTouchOutside(false);
              loadingBar.show();
