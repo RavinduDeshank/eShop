@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             if (UserPhoneKey != "null" && UserPasswordKey != "null"){
                 if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)){
 
-                    AllwAcccess(UserPhoneKey,UserPasswordKey);
+                    AllowAccess(UserPhoneKey,UserPasswordKey);
 
                     loadingBar.setTitle("Already Login");
                     loadingBar.setMessage("Please wait..");
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    private void AllwAcccess(final String phoneNum, final String password) {
+    private void AllowAccess(final String phoneNum, final String password) {
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, Home .class);
+                            Prevalent.currentOnlineUser = userData;
                             startActivity(intent);
                         }else{
 
