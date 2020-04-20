@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Sellers.SellerLoginActivity"></activity>
+        <activity android:name=".Sellers.SellerRegistrationActivity" />
+        <activity android:name=".Home" />
         <activity android:name=".AdminCategory" />
         <activity android:name=".AdminAddNewProduct" />
         <activity android:name=".Register" />

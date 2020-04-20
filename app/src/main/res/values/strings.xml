@@ -18,6 +18,15 @@
     <string name="ProPrice">Product Price</string>
     <string name="addPro">Add Product</string>
     <string name="AddNewPro">Add New Product</string>
+    <string name="sellerBegin">Seller Account</string>
+    <string name="sellerLoginBegin">Seller Login</string>
+    <string name="nameInput">Seller name</string>
+    <string name="phoneInput">Seller phone</string>
+    <string name="passwordInput">Seller password</string>
+    <string name="addressInput">Seller address</string>
+
+
+
 
     <string name="cart">Cart</string>
     <string name="category">Categories</string>
