@@ -112,7 +112,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+                new FirebaseRecyclerAdapter <Products, ProductViewHolder>(options) {
 
 
 
