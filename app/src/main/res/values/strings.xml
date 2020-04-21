@@ -24,7 +24,12 @@
     <string name="phoneInput">Seller phone</string>
     <string name="passwordInput">Seller password</string>
     <string name="addressInput">Seller address</string>
+
+    <string name="sellerLogout">Logout</string>
+    <string name="sellerAdd">Add New Product</string>
+
     <string name="addCart">Add To Cart</string>
+
 
     <string name="proName">Product Name</string>
     <string name="close">Close</string>

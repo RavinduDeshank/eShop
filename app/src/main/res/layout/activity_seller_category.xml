@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminCategory">
+    tools:context=".Sellers.SellerProductCategory">
 
     <TextView
         android:id="@+id/slogn_category"
@@ -26,7 +26,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="100dp">
 
         <ImageView
             android:id="@+id/t_shirts"
@@ -114,7 +114,12 @@
             android:layout_width="70dp"
             android:layout_height="80dp"
             android:src="@drawable/mobiles"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+        />
     </LinearLayout>
+
+
+
+
 
 </RelativeLayout>
