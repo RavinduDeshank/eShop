@@ -66,14 +66,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-       // DrawerLayout drawer = findViewById(R.id.drawer_layout);
-       // NavigationView navigationView = findViewById(R.id.nav_view);
-       // mAppBarConfiguration = new AppBarConfiguration.Builder(
-       //         R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-         //       .setDrawerLayout(drawer)
-           //     .build();
-
-        //navigationView.setNavigationItemSelectedListener(this);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -160,11 +152,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onOptionsItemSelected(MenuItem item)
     {
         int id = item.getItemId();
-
-//        if (id == R.id.action_settings)
-//        {
-//            return true;
-//        }
 
         return super.onOptionsItemSelected(item);
     }
