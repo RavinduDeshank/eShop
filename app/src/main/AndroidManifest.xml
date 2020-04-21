@@ -12,12 +12,16 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Sellers.SellerLoginActivity"></activity>
+        <activity android:name=".Sellers.SellerRegistrationActivity" />
+        
 
         <activity android:name=".Settings" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".AdminCategory" />
         <activity android:name=".AdminAddNewProduct" />
         <activity android:name=".Register" />
