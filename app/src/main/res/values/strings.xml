@@ -25,8 +25,11 @@
     <string name="passwordInput">Seller password</string>
     <string name="addressInput">Seller address</string>
 
-
-
+    <string name="proName">Product Name</string>
+    <string name="close">Close</string>
+    <string name="update">Update</string>
+    <string name="changePro">Change Profile</string>
+    <string name="address">Enter Your Address</string>
 
     <string name="cart">Cart</string>
     <string name="category">Categories</string>
