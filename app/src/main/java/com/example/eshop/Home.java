@@ -117,12 +117,21 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull Products products) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, final int i, @NonNull final Products products) {
 
                         productViewHolder.txtproductName.setText(products.getPname());
                         productViewHolder.txtproductDescription.setText(products.getDescription());
                         productViewHolder.txtProductPrice.setText("Price = $"+ products.getPrice() );
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
+
+                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Home.this, Product_Details.class);
+                                intent.putExtra("pid", products.getPid());
+                                startActivity(intent);
+                            }
+                        });
 
                     }
 
