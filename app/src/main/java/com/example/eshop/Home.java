@@ -121,7 +121,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
                         productViewHolder.txtproductName.setText(products.getPname());
                         productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = $"+ products.getPrice() );
+                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice() );
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
 
                         productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
