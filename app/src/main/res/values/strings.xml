@@ -27,9 +27,10 @@
 
     <string name="sellerLogout">Logout</string>
     <string name="sellerAdd">Add New Product</string>
-
+    <string name="adminManage">Manage Product</string>
+    <string name="newOrderChek">Check New Order</string>
     <string name="addCart">Add To Cart</string>
-
+    <string name="welcomeadmin">Welcome Admin</string>
 
     <string name="proName">Product Name</string>
     <string name="close">Close</string>

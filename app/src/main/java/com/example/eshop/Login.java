@@ -125,7 +125,7 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(Login.this,"Welcome Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(Login.this, SellerProductCategory.class);
+                                Intent intent = new Intent(Login.this, AdminHome.class);
                                 startActivity(intent);
 
                             }else if(parentDbName.equals("Users")){
