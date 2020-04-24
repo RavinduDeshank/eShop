@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Admin.AdminMaintainProducts"></activity>
         <activity android:name=".SearchProductActivity" />
-        <activity android:name=".Product_Details" />
+        <!--<activity android:name=".Product_Details" /> -->
         <activity android:name=".Sellers.SellerLoginActivity" />
         <activity android:name=".Sellers.SellerRegistrationActivity" />
         <activity android:name=".Settings" />
