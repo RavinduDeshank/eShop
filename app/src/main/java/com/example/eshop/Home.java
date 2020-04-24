@@ -44,10 +44,19 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+    private String type = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        Bundle bundel = intent.getExtras();
+        if (bundel != null)
+        {
+            type = getIntent().getExtras().get("Admin").toString();
+        }
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
@@ -80,8 +89,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        if (!type.equals("Admin"))
+        {
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
+
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -124,6 +137,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice()+".00" );
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
 
+
                         productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -133,6 +147,26 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             }
                         });
 
+                        /*productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view)
+                            {
+                                if (type.equals("Admin"))
+                                {
+                                    /*Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
+                                    intent.putExtra("pid", getpid());
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    /*Intent intent = new Intent(Home.this, ProductDetails.class);
+                                    intent.putExtra("pid", getpid());
+                                    startActivity(intent);
+                                }
+                            }
+                        }); */
+
+
                     }
 
                         @NonNull
@@ -141,7 +175,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items,parent,false);
                             ProductViewHolder holder = new ProductViewHolder(view);
                             return holder;
-
                         }
                 };
         recyclerView.setAdapter(adapter);
@@ -172,9 +205,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         if (id == R.id.nav_cart){
 
-        }else if (id == R.id.nav_orders){
-
-        }else if (id == R.id.nav_categories){
+        }
+        else if (id == R.id.nav_search)
+        {
+            Intent intent = new Intent(Home.this, SearchProductActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_categories){
 
         }else if (id == R.id.nav_setting){
 
