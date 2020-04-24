@@ -55,7 +55,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Bundle bundel = intent.getExtras();
         if (bundel != null)
         {
-            type = getIntent().getExtras().get("Admin").toString();
+            type = getIntent().getExtras().get("com/example/eshop/Admin").toString();
         }
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("Admin"))
+        if (!type.equals("com/example/eshop/Admin"))
         {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
             Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
@@ -125,33 +125,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter <Products, ProductViewHolder>(options) {
+                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
 
 
 
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, final int i, @NonNull final Products products) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull Products products) {
 
                         productViewHolder.txtproductName.setText(products.getPname());
                         productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice()+".00" );
+                        productViewHolder.txtProductPrice.setText("Price = $"+ products.getPrice() );
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
-
-
-                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Home.this, Product_Details.class);
-                                intent.putExtra("pid", products.getPid());
-                                startActivity(intent);
-                            }
-                        });
 
                         /*productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view)
                             {
-                                if (type.equals("Admin"))
+                                if (type.equals("com.example.eshop.Admin"))
                                 {
                                     /*Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
                                     intent.putExtra("pid", getpid());
@@ -165,7 +155,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                                 }
                             }
                         }); */
-
 
                     }
 
