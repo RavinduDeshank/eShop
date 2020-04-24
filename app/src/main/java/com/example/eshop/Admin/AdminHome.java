@@ -1,4 +1,4 @@
-package com.example.eshop;
+package com.example.eshop.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.eshop.Home;
+import com.example.eshop.MainActivity;
+import com.example.eshop.R;
 import com.example.eshop.Sellers.SellerHomeActivity;
 
 public class AdminHome extends AppCompatActivity {

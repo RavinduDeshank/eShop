@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.eshop.AdminHome;
 import com.example.eshop.R;
 import com.example.eshop.Sellers.SellerHomeActivity;
 import com.google.android.gms.tasks.Continuation;

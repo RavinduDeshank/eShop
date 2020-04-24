@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eshop.Admin.AdminCategory;
+import com.example.eshop.Admin.AdminHome;
 import com.example.eshop.Model.Users;
 import com.example.eshop.Prevalent.Prevalent;
 import com.example.eshop.Sellers.SellerProductCategory;
@@ -61,7 +62,7 @@ public class Login extends AppCompatActivity {
         AdminLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Loginbtn.setText("Login com.example.eshop.Admin");
+                Loginbtn.setText("Login Admin");
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdmin.setVisibility(View.VISIBLE);
                 parentDbName = "Admins";
@@ -121,17 +122,17 @@ public class Login extends AppCompatActivity {
 
                         if(userData.getPassword().equals(password)){
 
-                            if (parentDbName.equals("Admins")){
-
-                                Toast.makeText(Login.this,"Welcome com.example.eshop.Admin",Toast.LENGTH_SHORT).show();
+                            if(parentDbName.equals("Admins"))
+                            {
+                                Toast.makeText(Login.this, "Welcome Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, AdminHome.class);
                                 startActivity(intent);
-
-                            }else if(parentDbName.equals("Users")){
-
-                                Toast.makeText(Login.this,"Welcome to eShop",Toast.LENGTH_SHORT).show();
+                            }
+                            else if(parentDbName.equals("Users"))
+                            {
+                                Toast.makeText(Login.this, "Welcome to eShop",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, Home.class);
