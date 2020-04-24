@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 import com.example.eshop.Model.Users;
 import com.example.eshop.Prevalent.Prevalent;
+import com.example.eshop.Sellers.SellerHomeActivity;
 import com.example.eshop.Sellers.SellerRegistrationActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
     }
+
+
+
 
     private void AllowAccess(final String phoneNum, final String password) {
 

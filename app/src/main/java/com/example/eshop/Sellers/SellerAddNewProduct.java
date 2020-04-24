@@ -1,6 +1,4 @@
-
-package com.example.eshop.Admin;
-
+package com.example.eshop.Sellers;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.eshop.AdminHome;
 import com.example.eshop.R;
-import com.example.eshop.Sellers.SellerHomeActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class AdminAddNewProduct extends AppCompatActivity
+public class SellerAddNewProduct extends AppCompatActivity
 {
     private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
@@ -189,14 +185,14 @@ public class AdminAddNewProduct extends AppCompatActivity
             public void onFailure(@NonNull Exception e)
             {
                 String message = e.toString();
-                Toast.makeText(AdminAddNewProduct.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SellerAddNewProduct.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                 loadingBar.dismiss();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
             {
-                Toast.makeText(AdminAddNewProduct.this, "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SellerAddNewProduct.this, "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -219,7 +215,7 @@ public class AdminAddNewProduct extends AppCompatActivity
                         {
                             downloadImageUrl = task.getResult().toString();
 
-                            Toast.makeText(AdminAddNewProduct.this, "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SellerAddNewProduct.this, "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();
 
                             SaveProductInfoToDatabase();
                         }
@@ -257,17 +253,17 @@ public class AdminAddNewProduct extends AppCompatActivity
                     {
                         if (task.isSuccessful())
                         {
-                            Intent intent = new Intent(AdminAddNewProduct.this, AdminHome.class);
+                            Intent intent = new Intent(SellerAddNewProduct.this, SellerHomeActivity.class);
                             startActivity(intent);
 
                             loadingBar.dismiss();
-                            Toast.makeText(AdminAddNewProduct.this, "Product is added successfully..", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SellerAddNewProduct.this, "Product is added successfully..", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
                             loadingBar.dismiss();
                             String message = task.getException().toString();
-                            Toast.makeText(AdminAddNewProduct.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SellerAddNewProduct.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
