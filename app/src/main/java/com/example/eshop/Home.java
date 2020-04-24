@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.eshop.Admin.AdminMaintainProducts;
 import com.example.eshop.Model.Products;
 import com.example.eshop.Prevalent.Prevalent;
 import com.example.eshop.ViewHolder.ProductViewHolder;
@@ -37,6 +38,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
+import static android.system.Os.getpid;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -55,7 +58,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Bundle bundel = intent.getExtras();
         if (bundel != null)
         {
-            type = getIntent().getExtras().get("com/example/eshop/Admin").toString();
+            type = getIntent().getExtras().get("Admin").toString();
         }
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -75,6 +78,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -89,10 +93,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("com/example/eshop/Admin"))
+        if (!type.equals( "Admin" ) )
         {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+            Picasso.get().load( Prevalent.currentOnlineUser.getImage() ).placeholder( R.drawable.profile ).into( profileImageView );
         }
 
         recyclerView = findViewById(R.id.recycler_menu);
@@ -130,31 +134,34 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull Products products) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull final Products products) {
 
                         productViewHolder.txtproductName.setText(products.getPname());
                         productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = $"+ products.getPrice() );
+                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice() );
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
-
-                        /*productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view)
                             {
-                                if (type.equals("com.example.eshop.Admin"))
+
+                                if (type.equals( "Admin" ))
                                 {
-                                    /*Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
-                                    intent.putExtra("pid", getpid());
+                                    Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
+                                    intent.putExtra("pid", products.getPid());
                                     startActivity(intent);
                                 }
+
                                 else
                                 {
-                                    /*Intent intent = new Intent(Home.this, ProductDetails.class);
-                                    intent.putExtra("pid", getpid());
+                                    Intent intent = new Intent(Home.this, Product_Details.class);
+                                    intent.putExtra("pid", products.getPid());
                                     startActivity(intent);
                                 }
+
+
                             }
-                        }); */
+                        });
 
                     }
 
