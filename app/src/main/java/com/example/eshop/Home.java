@@ -55,7 +55,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Bundle bundel = intent.getExtras();
         if (bundel != null)
         {
-            type = getIntent().getExtras().get("Admin").toString();
+            type = getIntent().getExtras().get("com/example/eshop/Admin").toString();
         }
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("Admin"))
+        if (!type.equals("com/example/eshop/Admin"))
         {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
             Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
@@ -141,7 +141,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             @Override
                             public void onClick(View view)
                             {
-                                if (type.equals("Admin"))
+                                if (type.equals("com.example.eshop.Admin"))
                                 {
                                     /*Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
                                     intent.putExtra("pid", getpid());

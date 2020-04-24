@@ -1,4 +1,4 @@
-package com.example.eshop;
+package com.example.eshop.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.eshop.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -132,7 +133,7 @@ public class AdminAddNewProduct extends AppCompatActivity
     private void StoreProductInformation()
     {
         loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Dear Admin, Please wait while we are adding the new product.");
+        loadingBar.setMessage("Dear com.example.eshop.Admin, Please wait while we are adding the new product.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 

@@ -1,4 +1,4 @@
-package com.example.eshop;
+package com.example.eshop.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.eshop.Home;
+import com.example.eshop.R;
 
 public class AdminCategory extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class AdminCategory extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(AdminCategory.this, Home.class);
-                intent.putExtra("Admin", "Admin");
+                intent.putExtra("com/example/eshop/Admin", "com/example/eshop/Admin");
                 startActivity(intent);
             }
         });

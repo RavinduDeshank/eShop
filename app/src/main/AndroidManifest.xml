@@ -8,7 +8,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminMaintainProducts"></activity>
+        <activity android:name=".Admin.AdminMaintainProducts"></activity>
         <activity android:name=".SearchProductActivity" />
         <activity android:name=".Product_Details" />
         <activity android:name=".Sellers.SellerLoginActivity" />
@@ -18,8 +18,8 @@
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AdminCategory" />
-        <activity android:name=".AdminAddNewProduct" />
+        <activity android:name=".Admin.AdminCategory" />
+        <activity android:name=".Admin.AdminAddNewProduct" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">

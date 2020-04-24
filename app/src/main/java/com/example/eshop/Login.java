@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.eshop.Admin.AdminCategory;
 import com.example.eshop.Model.Users;
 import com.example.eshop.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +60,7 @@ public class Login extends AppCompatActivity {
         AdminLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Loginbtn.setText("Login Admin");
+                Loginbtn.setText("Login com.example.eshop.Admin");
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdmin.setVisibility(View.VISIBLE);
                 parentDbName = "Admins";
@@ -121,7 +122,7 @@ public class Login extends AppCompatActivity {
 
                             if (parentDbName.equals("Admins")){
 
-                                Toast.makeText(Login.this,"Welcome Admin",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this,"Welcome com.example.eshop.Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, AdminCategory.class);
