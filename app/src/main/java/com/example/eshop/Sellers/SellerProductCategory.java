@@ -19,7 +19,6 @@ public class SellerProductCategory extends AppCompatActivity {
 
     private Button maintainProductsBtn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
