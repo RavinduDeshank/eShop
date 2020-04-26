@@ -37,6 +37,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
+import static android.system.Os.getpid;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -147,24 +149,24 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             }
                         });
 
-                        /*productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view)
-                            {
-                                if (type.equals("Admin"))
-                                {
-                                    /*Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
-                                    intent.putExtra("pid", getpid());
-                                    startActivity(intent);
-                                }
-                                else
-                                {
-                                    /*Intent intent = new Intent(Home.this, ProductDetails.class);
-                                    intent.putExtra("pid", getpid());
-                                    startActivity(intent);
-                                }
-                            }
-                        }); */
+//                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view)
+//                            {
+//                                if (type.equals("Admin"))
+//                                {
+//                                    Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
+//                                    intent.putExtra("pid", getpid());
+//                                    startActivity(intent);
+//                                }
+//                                else
+//                                {
+//                                    Intent intent = new Intent(Home.this, Product_Details.class);
+//                                    intent.putExtra("pid", getpid());
+//                                    startActivity(intent);
+//                                }
+//                            }
+//                        });
 
 
                     }
