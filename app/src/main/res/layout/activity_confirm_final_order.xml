@@ -78,7 +78,7 @@
         android:text="Confirm"
         android:background="@color/colorPrimaryDark"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textAlignment="center"
         >
     </Button>
