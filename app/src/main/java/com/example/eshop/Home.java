@@ -142,6 +142,33 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
                         productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
+
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Home.this, Product_Details.class);
+                                intent.putExtra("pid", products.getPid());
+                                startActivity(intent);
+                            }
+                        });
+
+//                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view)
+//                            {
+//                                if (type.equals("Admin"))
+//                                {
+//                                    Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
+//                                    intent.putExtra("pid", getpid());
+//                                    startActivity(intent);
+//                                }
+//                                else
+//                                {
+//                                    Intent intent = new Intent(Home.this, Product_Details.class);
+//                                    intent.putExtra("pid", getpid());
+//                                    startActivity(intent);
+//                                }
+//                            }
+//                        });
+
                             public void onClick(View view)
                             {
 
@@ -158,6 +185,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                                     intent.putExtra("pid", products.getPid());
                                     startActivity(intent);
                                 }
+
 
 
                             }

@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.eshop">
 
-
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -13,12 +11,26 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".ConfirmFinalOrder"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".AdminHome" />
+        <activity
+            android:name=".Sellers.SellerHomeActivity"
+            android:label="@string/title_activity_seller_home" />
+        <activity android:name=".Sellers.SellerLoginActivity" />
+        <activity android:name=".Sellers.SellerRegistrationActivity" />
+        <activity android:name=".AdminMaintainProducts" />
+        <activity android:name=".SearchProductActivity" />
+        <activity android:name=".Product_Details" />
+        <activity android:name=".Sellers.SellerLoginActivity" />
+        <activity android:name=".Sellers.SellerRegistrationActivity" />
+
         <activity android:name=".ResetPassword"></activity>
         <activity android:name=".Admin.AdminMaintainProducts" />
         <activity android:name=".SearchProductActivity" /> <!-- <activity android:name=".Product_Details" /> -->
         <activity android:name=".Sellers.SellerLoginActivity" />
         <activity android:name=".Sellers.SellerRegistrationActivity" />
-
 
         <activity android:name=".Settings" />
         <activity
@@ -44,6 +56,7 @@
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
