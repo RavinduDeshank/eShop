@@ -60,6 +60,7 @@ public class CartActivity extends AppCompatActivity {
             {
                 txtTotalAmount.setText( "Total Price :$"+ String.valueOf(overTotalPrice));
 
+
                 Intent intent=new Intent(CartActivity.this, ConfirmFinalOrder.class);
                 intent.putExtra("Total Price", String.valueOf(overTotalPrice));
                 startActivity(intent);
