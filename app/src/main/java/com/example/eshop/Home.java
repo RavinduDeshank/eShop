@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.eshop.Admin.AdminMaintainProducts;
 import com.example.eshop.Model.Products;
 import com.example.eshop.Prevalent.Prevalent;
 import com.example.eshop.ViewHolder.ProductViewHolder;
@@ -77,6 +78,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -91,10 +93,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("Admin"))
+        if (!type.equals( "Admin" ) )
         {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+            Picasso.get().load( Prevalent.currentOnlineUser.getImage() ).placeholder( R.drawable.profile ).into( profileImageView );
         }
 
         recyclerView = findViewById(R.id.recycler_menu);
@@ -127,21 +129,20 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter <Products, ProductViewHolder>(options) {
+                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
 
 
 
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, final int i, @NonNull final Products products) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull final Products products) {
 
                         productViewHolder.txtproductName.setText(products.getPname());
                         productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice()+".00" );
+                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice() );
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
-
-
                         productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
+
                             public void onClick(View v) {
                                 Intent intent = new Intent(Home.this, Product_Details.class);
                                 intent.putExtra("pid", products.getPid());
@@ -168,6 +169,27 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 //                            }
 //                        });
 
+                            public void onClick(View view)
+                            {
+
+                                if (type.equals( "Admin" ))
+                                {
+                                    Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
+                                    intent.putExtra("pid", products.getPid());
+                                    startActivity(intent);
+                                }
+
+                                else
+                                {
+                                    Intent intent = new Intent(Home.this, Product_Details.class);
+                                    intent.putExtra("pid", products.getPid());
+                                    startActivity(intent);
+                                }
+
+
+
+                            }
+                        });
 
                     }
 
