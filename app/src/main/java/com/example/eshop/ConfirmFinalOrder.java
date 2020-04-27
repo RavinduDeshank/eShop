@@ -36,6 +36,7 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         totAmount = getIntent().getStringExtra("Total Price");
         Toast.makeText(this, "Total Price = $ " + totAmount, Toast.LENGTH_SHORT).show();
 
+
         confirmOrderBtn = (Button) findViewById(R.id.confirm_final_order_btn);
         nameEditText = (EditText) findViewById(R.id.shippment_name);
         phoneEditText = (EditText) findViewById(R.id.shippment_phone_number);
