@@ -11,6 +11,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".ConfirmFinalOrder"></activity>
         <activity android:name=".CartActivity" />
         <activity android:name=".AdminHome" />
@@ -24,11 +25,20 @@
         <activity android:name=".Product_Details" />
         <activity android:name=".Sellers.SellerLoginActivity" />
         <activity android:name=".Sellers.SellerRegistrationActivity" />
+
+        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".Admin.AdminMaintainProducts" />
+        <activity android:name=".SearchProductActivity" /> <!-- <activity android:name=".Product_Details" /> -->
+        <activity android:name=".Sellers.SellerLoginActivity" />
+        <activity android:name=".Sellers.SellerRegistrationActivity" />
+
         <activity android:name=".Settings" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Admin.AdminCategory" />
+        <activity android:name=".Admin.AdminAddNewProduct" />
         <activity android:name=".Sellers.SellerProductCategory" />
         <activity android:name=".Sellers.SellerAddNewProduct" />
         <activity android:name=".Register" />
@@ -44,5 +54,11 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
     </application>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
 </manifest>
