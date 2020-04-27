@@ -150,8 +150,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             }
                         });
 
-//                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
+                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
 //                            public void onClick(View view)
 //                            {
 //                                if (type.equals("Admin"))
