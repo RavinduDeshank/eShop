@@ -34,10 +34,11 @@ public class CartActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button NextProcessBtn;
-    private TextView txtTotalAmount, txtMsg1;
+    private Button nextProcessBtn;
+    private TextView txtTotalAmount;
 
     private int overTotalPrice = 0;
+
 
 
     @Override
@@ -50,11 +51,11 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
+        nextProcessBtn = (Button) findViewById(R.id.next_process_btn);
         txtTotalAmount = (TextView) findViewById(R.id.total_price);
-        txtMsg1 = (TextView) findViewById(R.id.msg1);
+        //txtMsg1 = (TextView) findViewById(R.id.msg1);
 
-        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+        nextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
@@ -70,31 +71,30 @@ public class CartActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
-        CheckOrderState();
 
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartActivity List");
 
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-        FirebaseRecyclerOptions<Cart> options =
-                new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(cartListRef.child("User View")
-                                .child(Prevalent.currentOnlineUser.getPhone()).child("Products"), Cart.class).build();
+        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
+                .setQuery(cartListRef.child("User View")
+                        .child(Prevalent.currentOnlineUser.getPhone()).child("Products"), Cart.class)
+                .build();
 
-        FirebaseRecyclerAdapter<Cart,CartViewHolder> adapter=
-                new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder( @NonNull CartViewHolder holder, int position, @NonNull final Cart model)
-                    {
-                        holder.txtProductQuantity.setText("Quantity = " + model .getQuantity());
-                        holder.txtProductPrice.setText("Price = Rs."+ model.getPrice());
-                        holder.txtProductName.setText(model.getPname());
+        FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
+                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
+                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
+                holder.txtProductPrice.setText("Price = " + model.getPrice());
+                holder.txtProductName.setText("Product = "+model.getPname());
 
-                        int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
-                        overTotalPrice = overTotalPrice + oneTypeProductTPrice;
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                int onetimeProductTotalPrice = ( ( Integer.valueOf( model.getPrice() ) ) ) * Integer.valueOf( model.getQuantity() );
+//                overTotalPrice = overTotalPrice + onetimeProductTotalPrice;
+//                txtTotalAmount.setText("Total Price = Rs. " + String.valueOf(overTotalPrice));
+//
+//
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
@@ -160,52 +160,52 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-    private void CheckOrderState()
-    {
-        DatabaseReference ordersRef;
-        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
-        ordersRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if(dataSnapshot.exists())
-                {
-                    String shippingState = dataSnapshot.child("state").getValue().toString();
-                    String userName = dataSnapshot.child("name").getValue().toString();
+//    private void CheckOrderState()
+//    {
+//        DatabaseReference ordersRef;
+//        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
+//        ordersRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+//            {
+//                if(dataSnapshot.exists())
+//                {
+//                    String shippingState = dataSnapshot.child("state").getValue().toString();
+//                    String userName = dataSnapshot.child("name").getValue().toString();
+//
+//                    if(shippingState.equals("shipped"))
+//                    {
+//                        txtTotalAmount.setText("Dear" + userName + "\n Your order is shipeed successfully.");
+//                        recyclerView.setVisibility(View.GONE);
+//
+//                        txtMsg1.setVisibility(View.VISIBLE);
+//                        txtMsg1.setText("Congradulations! Your final order has been shipped successfully.");
+//                        nextProcessBtn.setVisibility(View.GONE);
+//
+//                        Toast.makeText(CartActivity.this, "You can purchase more products, once you receive your first final order. ", Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                    else if(shippingState.equals("not shipped"))
+//                    {
+//                        txtTotalAmount.setText("Shipping State = Not Shipped");
+//                        recyclerView.setVisibility(View.GONE);
+//
+//                        txtMsg1.setVisibility(View.VISIBLE);
+//                        NextProcessBtn.setVisibility(View.GONE);
+//
+//                        Toast.makeText(CartActivity.this, "You can purchase more products, once you receive your first final order.", Toast.LENGTH_SHORT).show();
+//
+//                    }
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
-                    if(shippingState.equals("shipped"))
-                    {
-                        txtTotalAmount.setText("Dear" + userName + "\n Your order is shipeed successfully.");
-                        recyclerView.setVisibility(View.GONE);
-
-                        txtMsg1.setVisibility(View.VISIBLE);
-                        txtMsg1.setText("Congradulations! Your final order has been shipped successfully.");
-                        NextProcessBtn.setVisibility(View.GONE);
-
-                        Toast.makeText(CartActivity.this, "You can purchase more products, once you receive your first final order. ", Toast.LENGTH_SHORT).show();
-
-                    }
-                    else if(shippingState.equals("not shipped"))
-                    {
-                        txtTotalAmount.setText("Shipping State = Not Shipped");
-                        recyclerView.setVisibility(View.GONE);
-
-                        txtMsg1.setVisibility(View.VISIBLE);
-                        NextProcessBtn.setVisibility(View.GONE);
-
-                        Toast.makeText(CartActivity.this, "You can purchase more products, once you receive your first final order.", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+   // }
 }
