@@ -126,7 +126,6 @@ public class ConfirmFinalOrder extends AppCompatActivity {
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     }
-
                                 }
                             });
                 }
