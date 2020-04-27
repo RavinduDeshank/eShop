@@ -91,6 +91,7 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         SimpleDateFormat curretTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = curretTime.format(calForDate.getTime());
 
+
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
                 .child(Prevalent.currentOnlineUser.getPhone());
