@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 
 import com.example.eshop.Home;
+import com.example.eshop.MainActivity;
 import com.example.eshop.R;
 import com.example.eshop.Sellers.SellerAddNewProduct;
 
@@ -23,14 +24,36 @@ public class AdminCategory extends AppCompatActivity {
         private ImageView glasses, hatsCaps, wallets, shoes;
         private ImageView headPhoneHandfree, Laptops, watches, mobilePhones;
 
-        private Button maintainProductsBtn;
+        private Button LogoutBtn, CheckOrdersBtn, maintainProductsBtn;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_seller_category);
 
+            LogoutBtn = (Button) findViewById(R.id.admin_logout_btn);
+            CheckOrdersBtn = (Button) findViewById(R.id.check_orders_btn);
             maintainProductsBtn = (Button) findViewById(R.id.maintain_btn);
+
+            LogoutBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    Intent intent = new Intent(AdminCategory.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            CheckOrdersBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    Intent intent = new Intent(AdminCategory.this, AdminNewOrders.class);
+                    startActivity(intent);
+                }
+            });
 
             maintainProductsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override

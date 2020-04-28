@@ -68,5 +68,12 @@
     <string name="maintain_product_name">Product Name</string>
     <string name="maintain_product_price">Product Price</string>
     <string name="maintain_product_description">Product Description</string>
+    <string name="admin_new_orders">New Orders</string>
+    <string name="order_user_name">User Name</string>
+    <string name="order_phone_number">Phone Number</string>
+    <string name="order_total_price">Total Price</string>
+    <string name="order_address">Address, City</string>
+    <string name="order_datetime">Date Time</string>
+    <string name="user_products">Products</string>
 
 </resources>
