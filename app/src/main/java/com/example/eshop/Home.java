@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.eshop.Admin.AdminMaintainProducts;
 import com.example.eshop.Model.Products;
 import com.example.eshop.Prevalent.Prevalent;
 import com.example.eshop.ViewHolder.ProductViewHolder;
@@ -36,6 +37,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
+
+import static android.system.Os.getpid;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -67,14 +70,19 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view)
+            {
+                if (!type.equals("Admin"))
+                {
+                    Intent intent = new Intent(Home.this,CartActivity.class);
+                    startActivity(intent);
+                }
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -90,10 +98,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("Admin"))
+        if (!type.equals( "Admin" ) )
         {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+            Picasso.get().load( Prevalent.currentOnlineUser.getImage() ).placeholder( R.drawable.profile ).into( profileImageView );
         }
 
         recyclerView = findViewById(R.id.recycler_menu);
@@ -126,48 +134,34 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter <Products, ProductViewHolder>(options) {
-
-
-
+                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options)
+                {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, final int i, @NonNull final Products products) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
 
-                        productViewHolder.txtproductName.setText(products.getPname());
-                        productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice()+".00" );
-                        Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
+                        holder.txtproductName.setText(model.getPname());
+                        holder.txtproductDescription.setText(model.getDescription());
+                        holder.txtProductPrice.setText("Price = $ "+ model.getPrice() );
+                        Picasso.get().load(model.getImage()).into(holder.imageView);
 
-
-                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Home.this, Product_Details.class);
-                                intent.putExtra("pid", products.getPid());
-                                startActivity(intent);
-                            }
-                        });
-
-                        /*productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view)
+                            public void onClick(View v)
                             {
                                 if (type.equals("Admin"))
                                 {
-                                    /*Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
-                                    intent.putExtra("pid", getpid());
+                                    Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
+                                    intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
                                 else
-                                {
-                                    /*Intent intent = new Intent(Home.this, ProductDetails.class);
-                                    intent.putExtra("pid", getpid());
+                                    {
+                                    Intent intent = new Intent(Home.this, Product_Details.class);
+                                    intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
                             }
-                        }); */
-
-
+                        });
                     }
 
                         @NonNull
@@ -204,28 +198,44 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_cart){
-
+        if (id == R.id.nav_cart)
+        {
+            if (!type.equals("Admin"))
+            {
+                Intent intent = new Intent(Home.this,CartActivity.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_search)
         {
-            Intent intent = new Intent(Home.this, SearchProductActivity.class);
-            startActivity(intent);
+            if (!type.equals("Admin"))
+            {
+                Intent intent = new Intent(Home.this, SearchProductActivity.class);
+                startActivity(intent);
+            }
         }
-        else if (id == R.id.nav_categories){
+        else if (id == R.id.nav_categories)
+        {
 
-        }else if (id == R.id.nav_setting){
-
-            Intent intent = new Intent(Home.this,Settings.class);
-            startActivity(intent);
-
-        }else if (id == R.id.nav_logout){
-
-            Paper.book().destroy();
-            Intent intent = new Intent(Home.this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+        }
+        else if (id == R.id.nav_setting)
+        {
+            if (!type.equals("Admin"))
+            {
+                Intent intent = new Intent(Home.this,Settings.class);
+                startActivity(intent);
+            }
+        }
+        else if (id == R.id.nav_logout)
+        {
+            if (!type.equals("Admin"))
+            {
+                Paper.book().destroy();
+                Intent intent = new Intent(Home.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -34,10 +34,11 @@ public class CartActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button NextProcessBtn;
-    private TextView txtTotalAmount, txtMsg1;
+    private Button nextProcessBtn;
+    private TextView txtTotalAmount,txtMsg1;
 
     private int overTotalPrice = 0;
+
 
 
     @Override
@@ -50,15 +51,15 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
+        nextProcessBtn = (Button) findViewById(R.id.next_process_btn);
         txtTotalAmount = (TextView) findViewById(R.id.total_price);
         txtMsg1 = (TextView) findViewById(R.id.msg1);
 
-        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+        nextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                txtTotalAmount.setText( "Total Price :$"+ String.valueOf(overTotalPrice));
+                txtTotalAmount.setText( "Total Price :Rs."+ String.valueOf(overTotalPrice));
 
 
                 Intent intent=new Intent(CartActivity.this, ConfirmFinalOrder.class);
@@ -71,10 +72,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
-        CheckOrderState();
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options =
@@ -90,11 +89,29 @@ public class CartActivity extends AppCompatActivity {
                         cartViewHolder.txtProductQuantity.setText("Quantity = " + model .getQuantity());
                         cartViewHolder.txtProductPrice.setText("Price = "+ model.getPrice() + "$");
                         cartViewHolder.txtProductName.setText(model.getPname());
+                      
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartActivity List");
 
-                        int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
-                        overTotalPrice = overTotalPrice + oneTypeProductTPrice;
+        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
+                .setQuery(cartListRef.child("User View")
+                        .child(Prevalent.currentOnlineUser.getPhone()).child("Products"), Cart.class)
+                .build();
+
+        FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
+                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
+                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
+                holder.txtProductPrice.setText("Price = " + model.getPrice());
+                holder.txtProductName.setText("Product = "+model.getPname());
+
+//                int oneTypeProductTPrice = ( ( Integer.valueOf( model.getPrice() ) ) ) * Integer.valueOf( model.getQuantity() );
+//                overTotalPrice = overTotalPrice + oneTypeProductTPrice;
+//                txtTotalAmount.setText("Total Price = Rs. " + String.valueOf(overTotalPrice));
+//
 
                         cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
@@ -180,7 +197,7 @@ public class CartActivity extends AppCompatActivity {
 
                         txtMsg1.setVisibility(View.VISIBLE);
                         txtMsg1.setText("Congradulations! Your final order has been shipped successfully.");
-                        NextProcessBtn.setVisibility(View.GONE);
+                        nextProcessBtn.setVisibility(View.GONE);
 
                         Toast.makeText(CartActivity.this, "You can purchase more products, once you receive your first final order. ", Toast.LENGTH_SHORT).show();
 
@@ -191,7 +208,7 @@ public class CartActivity extends AppCompatActivity {
                         recyclerView.setVisibility(View.GONE);
 
                         txtMsg1.setVisibility(View.VISIBLE);
-                        NextProcessBtn.setVisibility(View.GONE);
+                        nextProcessBtn.setVisibility(View.GONE);
 
                         Toast.makeText(CartActivity.this, "You can purchase more products, once you receive your first final order.", Toast.LENGTH_SHORT).show();
 

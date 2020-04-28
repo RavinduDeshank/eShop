@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.eshop.Admin.AdminCategory;
+import com.example.eshop.Admin.AdminHome;
 import com.example.eshop.Model.Users;
 import com.example.eshop.Prevalent.Prevalent;
 import com.example.eshop.Sellers.SellerProductCategory;
@@ -30,7 +32,7 @@ public class Login extends AppCompatActivity {
     private EditText InputPhoneNum,InputPassword;
     private Button Loginbtn;
     private ProgressDialog loadingBar;
-    private TextView AdminLink,NotAdmin;
+    private TextView AdminLink,NotAdmin, ForgetPasswordLink;
 
     private String parentDbName = "Users";
     private CheckBox chBoxRememberMe;
@@ -45,6 +47,7 @@ public class Login extends AppCompatActivity {
         InputPassword = (EditText)findViewById(R.id.login_password_input);
         AdminLink = (TextView)findViewById(R.id.admin_panel_link);
         NotAdmin = (TextView)findViewById(R.id.not_admin_panel_link);
+        ForgetPasswordLink = findViewById(R.id.forget_password_link);
 
         loadingBar = new ProgressDialog(this);
 
@@ -57,6 +60,17 @@ public class Login extends AppCompatActivity {
                 LoginUser();
             }
         });
+
+        ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(Login.this, ResetPassword.class);
+                intent.putExtra("check", "login");
+                startActivity(intent);
+            }
+        });
+
         AdminLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,17 +134,17 @@ public class Login extends AppCompatActivity {
 
                         if(userData.getPassword().equals(password)){
 
-                            if (parentDbName.equals("Admins")){
-
-                                Toast.makeText(Login.this,"Welcome Admin",Toast.LENGTH_SHORT).show();
+                            if(parentDbName.equals("Admins"))
+                            {
+                                Toast.makeText(Login.this, "Welcome Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, AdminHome.class);
                                 startActivity(intent);
-
-                            }else if(parentDbName.equals("Users")){
-
-                                Toast.makeText(Login.this,"Welcome to eShop",Toast.LENGTH_SHORT).show();
+                            }
+                            else if(parentDbName.equals("Users"))
+                            {
+                                Toast.makeText(Login.this, "Welcome to eShop",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, Home.class);

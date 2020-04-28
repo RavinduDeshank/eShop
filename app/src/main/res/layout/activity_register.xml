@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:src="@drawable/app_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="263dp"
         />
     <EditText
         android:id="@+id/register_name_input"
@@ -24,7 +24,7 @@
         android:padding="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:hint="@string/EnterName"
         android:inputType="textPersonName"
         android:textColor="@android:color/white"

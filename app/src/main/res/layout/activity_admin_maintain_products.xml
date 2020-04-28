@@ -8,8 +8,9 @@
     android:layout_marginTop="20dp"
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
+    android:layout_marginBottom="30dp"
     app:cardElevation="15dp"
-    tools:context=".AdminMaintainProducts">
+    tools:context=".Admin.AdminMaintainProducts">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -75,6 +76,21 @@
             android:textSize="18dp"
             android:padding="12dp"
             android:layout_margin="5dp"
+            android:background="@drawable/buttons"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/delete_product_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/apply_changes_btn"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="60dp"
+            android:text="Delete this product"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:padding="12dp"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/buttons"
             android:textColor="@android:color/white"/>
 
