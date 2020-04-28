@@ -36,6 +36,7 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         totAmount = getIntent().getStringExtra("Total Price");
         Toast.makeText(this, "Total Price = $ " + totAmount, Toast.LENGTH_SHORT).show();
 
+
         confirmOrderBtn = (Button) findViewById(R.id.confirm_final_order_btn);
         nameEditText = (EditText) findViewById(R.id.shippment_name);
         phoneEditText = (EditText) findViewById(R.id.shippment_phone_number);
@@ -90,6 +91,7 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         SimpleDateFormat curretTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = curretTime.format(calForDate.getTime());
 
+
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
                 .child(Prevalent.currentOnlineUser.getPhone());
@@ -126,7 +128,6 @@ public class ConfirmFinalOrder extends AppCompatActivity {
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     }
-
                                 }
                             });
                 }

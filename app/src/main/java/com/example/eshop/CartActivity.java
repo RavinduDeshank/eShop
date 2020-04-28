@@ -61,6 +61,7 @@ public class CartActivity extends AppCompatActivity {
             {
                 txtTotalAmount.setText( "Total Price :Rs."+ String.valueOf(overTotalPrice));
 
+
                 Intent intent=new Intent(CartActivity.this, ConfirmFinalOrder.class);
                 intent.putExtra("Total Price", String.valueOf(overTotalPrice));
                 startActivity(intent);
@@ -74,6 +75,21 @@ public class CartActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        FirebaseRecyclerOptions<Cart> options =
+                new FirebaseRecyclerOptions.Builder<Cart>()
+                        .setQuery(cartListRef.child("User View")
+                                .child(Prevalent.currentOnlineUser.getPhone()).child("Products"), Cart.class).build();
+
+        FirebaseRecyclerAdapter<Cart,CartViewHolder> adapter=
+                new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder( @NonNull CartViewHolder cartViewHolder, int position, @NonNull final Cart model)
+                    {
+                        cartViewHolder.txtProductQuantity.setText("Quantity = " + model .getQuantity());
+                        cartViewHolder.txtProductPrice.setText("Price = "+ model.getPrice() + "$");
+                        cartViewHolder.txtProductName.setText(model.getPname());
+                      
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartActivity List");
 
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
@@ -94,6 +110,7 @@ public class CartActivity extends AppCompatActivity {
 //                txtTotalAmount.setText("Total Price = Rs. " + String.valueOf(overTotalPrice));
 //
 
+                        cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
