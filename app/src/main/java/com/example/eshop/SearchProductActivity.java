@@ -62,13 +62,22 @@ public class SearchProductActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull Products products)
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
                     {
-                        productViewHolder.txtproductName.setText(products.getPname());
-                        productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = $"+ products.getPrice() );
-                        Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
+                        holder.txtproductName.setText(model.getPname());
+                        holder.txtproductDescription.setText(model.getDescription());
+                        holder.txtProductPrice.setText("Price = $"+ model.getPrice() );
+                        Picasso.get().load(model.getImage()).into(holder.imageView);
 
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view)
+                            {
+                                Intent intent = new Intent(SearchProductActivity.this, Product_Details.class);
+                                intent.putExtra("pid", model.getPid());
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @NonNull

@@ -69,12 +69,16 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Home.this,CartActivity.class);
-                startActivity(intent);
+            public void onClick(View view)
+            {
+                if (!type.equals("Admin"))
+                {
+                    Intent intent = new Intent(Home.this,CartActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -129,68 +133,34 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
-
-
-
+                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options)
+                {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull final Products products) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
 
-                        productViewHolder.txtproductName.setText(products.getPname());
-                        productViewHolder.txtproductDescription.setText(products.getDescription());
-                        productViewHolder.txtProductPrice.setText("Price = Rs."+ products.getPrice() );
-                        Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
-                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        holder.txtproductName.setText(model.getPname());
+                        holder.txtproductDescription.setText(model.getDescription());
+                        holder.txtProductPrice.setText("Price = $ "+ model.getPrice() );
+                        Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
-
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Home.this, Product_Details.class);
-                                intent.putExtra("pid", products.getPid());
-                                startActivity(intent);
-                            }
-                        });
-
-                        productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-//                            public void onClick(View view)
-//                            {
-//                                if (type.equals("Admin"))
-//                                {
-//                                    Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
-//                                    intent.putExtra("pid", getpid());
-//                                    startActivity(intent);
-//                                }
-//                                else
-//                                {
-//                                    Intent intent = new Intent(Home.this, Product_Details.class);
-//                                    intent.putExtra("pid", getpid());
-//                                    startActivity(intent);
-//                                }
-//                            }
-//                        });
-
-                            public void onClick(View view)
+                            public void onClick(View v)
                             {
-
-                                if (type.equals( "Admin" ))
+                                if (type.equals("Admin"))
                                 {
                                     Intent intent = new Intent(Home.this, AdminMaintainProducts.class);
-                                    intent.putExtra("pid", products.getPid());
+                                    intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
-
                                 else
-                                {
+                                    {
                                     Intent intent = new Intent(Home.this, Product_Details.class);
-                                    intent.putExtra("pid", products.getPid());
+                                    intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
-
-
-
                             }
                         });
-
                     }
 
                         @NonNull
@@ -227,31 +197,44 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_cart){
-
-            Intent intent = new Intent(Home.this,CartActivity.class);
-            startActivity(intent);
-
+        if (id == R.id.nav_cart)
+        {
+            if (!type.equals("Admin"))
+            {
+                Intent intent = new Intent(Home.this,CartActivity.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_search)
         {
-            Intent intent = new Intent(Home.this, SearchProductActivity.class);
-            startActivity(intent);
+            if (!type.equals("Admin"))
+            {
+                Intent intent = new Intent(Home.this, SearchProductActivity.class);
+                startActivity(intent);
+            }
         }
-        else if (id == R.id.nav_categories){
+        else if (id == R.id.nav_categories)
+        {
 
-        }else if (id == R.id.nav_setting){
-
-            Intent intent = new Intent(Home.this,Settings.class);
-            startActivity(intent);
-
-        }else if (id == R.id.nav_logout){
-
-            Paper.book().destroy();
-            Intent intent = new Intent(Home.this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+        }
+        else if (id == R.id.nav_setting)
+        {
+            if (!type.equals("Admin"))
+            {
+                Intent intent = new Intent(Home.this,Settings.class);
+                startActivity(intent);
+            }
+        }
+        else if (id == R.id.nav_logout)
+        {
+            if (!type.equals("Admin"))
+            {
+                Paper.book().destroy();
+                Intent intent = new Intent(Home.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
