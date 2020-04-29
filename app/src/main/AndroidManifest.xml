@@ -13,23 +13,23 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin.AdminHome"></activity>
+        <activity android:name=".Admin.AdminHome" />
         <activity android:name=".Admin.CheckNewProduct" />
         <activity android:name=".Admin.AdminUserProducts" />
         <activity android:name=".Admin.AdminNewOrders" />
         <activity android:name=".ConfirmFinalOrder" />
         <activity android:name=".CartActivity" />
-        <activity
-            android:name=".Sellers.SellerHomeActivity"/>
-            <!--android:label="@string/title_activity_seller_home" />-->
+        <activity android:name=".Sellers.SellerHomeActivity" /> <!-- android:label="@string/title_activity_seller_home" /> -->
         <activity android:name=".Sellers.SellerLoginActivity" />
         <activity android:name=".Sellers.SellerRegistrationActivity" />
         <activity android:name=".Product_Details" />
         <activity android:name=".ResetPassword" />
         <activity android:name=".Admin.AdminMaintainProducts" />
         <activity android:name=".SearchProductActivity" /> <!-- <activity android:name=".Product_Details" /> -->
-        <!--<activity android:name=".Sellers.SellerLoginActivity" />
-        <activity android:name=".Sellers.SellerRegistrationActivity" />-->
+        <!--
+<activity android:name=".Sellers.SellerLoginActivity" />
+        <activity android:name=".Sellers.SellerRegistrationActivity" />
+        -->
         <activity android:name=".Settings" />
         <activity
             android:name=".Home"
