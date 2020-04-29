@@ -10,11 +10,10 @@ import android.widget.Button;
 import com.example.eshop.Home;
 import com.example.eshop.MainActivity;
 import com.example.eshop.R;
-import com.example.eshop.Sellers.SellerHomeActivity;
 
 public class AdminHome extends AppCompatActivity {
 
-    private Button logOutbtn,checkOrderbtn,maintainProductbtn;
+    private Button logOutbtn,checkOrderbtn,maintainProductbtn,checkApproveProductbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +23,7 @@ public class AdminHome extends AppCompatActivity {
         logOutbtn =(Button) findViewById(R.id.admin_logout);
         checkOrderbtn = (Button)findViewById(R.id.admin_cheak_new);
         maintainProductbtn =(Button) findViewById(R.id.admin_maintain_product);
+        checkApproveProductbtn =(Button) findViewById(R.id.acheck_approve_order_btn);
 
         maintainProductbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +45,17 @@ public class AdminHome extends AppCompatActivity {
         checkOrderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHome.this, SellerHomeActivity.class);
+                Intent intent = new Intent(AdminHome.this, AdminNewOrders.class);
                 startActivity(intent);
 
-                //need to add admin new order activity
+            }
+        });
+
+        checkApproveProductbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminHome.this, CheckNewProduct.class);
+                startActivity(intent);
             }
         });
 

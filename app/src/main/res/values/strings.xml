@@ -2,7 +2,7 @@
     <string name="app_name">eShop</string>
     <string name="Name">eShop</string>
     <string name="moto">Makes Things Easy</string>
-    <string name="Alredy">Already have an Account? Login</string>
+    <string name="Alredy">Already have an Account?  Login</string>
     <string name="join">Join Now</string>
     <string name="phoneNum">Phone Number</string>
     <string name="password">Password</string>
@@ -26,13 +26,17 @@
     <string name="addressInput">Seller address</string>
     <string name="totalPrice">Total Price </string>
     <string name="productQuantity">Product Quantity</string>
+    <string name="unverify">My Un-Verified Products</string>
+    <string name="proState">Product Status</string>
 
     <string name="sellerLogout">Logout</string>
     <string name="sellerAdd">Add New Product</string>
     <string name="adminManage">Manage Product</string>
-    <string name="newOrderChek">Check New Order</string>
+    <string name="newOrderChek">Check new Order</string>
+    <string name="newOrderChekadAprov">Check and Approve new Product</string>
     <string name="addCart">Add To Cart</string>
     <string name="welcomeadmin">Welcome Admin</string>
+    <string name="Approve_new_Product">Approve new Product</string>
 
     <string name="proName">Product Name</string>
     <string name="close">Close</string>
@@ -75,5 +79,6 @@
     <string name="order_address">Address, City</string>
     <string name="order_datetime">Date Time</string>
     <string name="user_products">Products</string>
+    <string name="title_activity_seller__home">Seller_Home</string>
 
 </resources>
