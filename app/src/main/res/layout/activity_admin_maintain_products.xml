@@ -35,7 +35,7 @@
             android:padding="12dp"
             android:layout_margin="5dp"
             android:background="@drawable/input_design"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary" />
 
 
         <EditText
