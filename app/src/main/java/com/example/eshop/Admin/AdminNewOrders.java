@@ -33,7 +33,6 @@ public class AdminNewOrders extends AppCompatActivity {
         setContentView(R.layout.activity_admin_new_orders);
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
-
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
     }

@@ -40,7 +40,7 @@ public class AdminMaintainProducts extends AppCompatActivity {
         setContentView(R.layout.activity_admin_maintain_products);
 
         productID = getIntent().getStringExtra("pid");
-        productRef = FirebaseDatabase.getInstance().getReference().child("Products").child("productID");
+        productRef = FirebaseDatabase.getInstance().getReference().child("Products").child(productID);
 
         applyChangesBtn = findViewById(R.id.apply_changes_btn);
         name = findViewById(R.id.product_name_maintain);
