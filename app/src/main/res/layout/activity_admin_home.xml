@@ -47,6 +47,20 @@
         android:textColor="@android:color/white"/>
 
     <Button
+        android:id="@+id/acheck_approve_order_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_below="@+id/admin_cheak_new"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:text="@string/newOrderChekadAprov"
+        android:textColor="@android:color/white"/>
+
+    <Button
         android:id="@+id/admin_logout"
         android:layout_width="match_parent"
         android:layout_height="42dp"
@@ -60,5 +74,6 @@
         android:textSize="20sp"
         android:text="@string/sellerLogout"
         android:textColor="@android:color/white"/>
+
 
 </RelativeLayout>

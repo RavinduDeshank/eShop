@@ -14,11 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.eshop.Admin.AdminCategory;
 import com.example.eshop.Admin.AdminHome;
 import com.example.eshop.Model.Users;
 import com.example.eshop.Prevalent.Prevalent;
-import com.example.eshop.Sellers.SellerProductCategory;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -124,22 +122,22 @@ public class Login extends AppCompatActivity {
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.child(parentDbName).child(phoneNum).exists()){
-
-                    Users userData = dataSnapshot.child(parentDbName).child(phoneNum).getValue(Users.class);
-
-                    if(userData.getPhone().equals(phoneNum)){
-
-                        if(userData.getPassword().equals(password)){
-
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if(dataSnapshot.child(parentDbName).child(phoneNum).exists())
+                {
+                    Users usersData = dataSnapshot.child(parentDbName).child(phoneNum).getValue(Users.class);
+                    if (usersData.getPhone().equals(phoneNum))
+                    {
+                        if (usersData.getPassword().equals(password))
+                        {
                             if(parentDbName.equals("Admins"))
                             {
                                 Toast.makeText(Login.this, "Welcome Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, AdminHome.class);
+                                intent.putExtra("category", "admin");
                                 startActivity(intent);
                             }
                             else if(parentDbName.equals("Users"))
@@ -148,22 +146,26 @@ public class Login extends AppCompatActivity {
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(Login.this, Home.class);
-                                Prevalent.currentOnlineUser = userData;
+                                intent.putExtra("Phone", phoneNum);
+                                intent.putExtra("category","users");
                                 startActivity(intent);
                             }
-
-                        }else{
-
+                        }
+                        else
+                        {
+                            Toast.makeText(Login.this, "Your password does not matching...!",Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
-                            Toast.makeText(Login.this,"Password is Incorrect",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Please login again",Toast.LENGTH_SHORT).show();
                         }
                     }
-                }else{
-                    Toast.makeText(Login.this,"Account with this "+ phoneNum +" Number do not exists",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(Login.this, "Account with this ( " + phoneNum + " ) number does not exits...",Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
+                    Toast.makeText(Login.this, "You need to create new account...!",Toast.LENGTH_SHORT).show();
                 }
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
