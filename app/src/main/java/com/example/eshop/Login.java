@@ -147,7 +147,6 @@ public class Login extends AppCompatActivity {
 
                                 Intent intent = new Intent(Login.this, Home.class);
                                 intent.putExtra("Phone", phoneNum);
-                                intent.putExtra("category","users");
                                 startActivity(intent);
                             }
                         }
