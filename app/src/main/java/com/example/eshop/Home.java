@@ -47,7 +47,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-
     private String type = "";
 
     @Override
@@ -60,7 +59,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (bundle != null)
         {
             type = getIntent().getExtras().get("Admin").toString();
-
         }
         Paper.init(this);
 

@@ -26,7 +26,7 @@
     <string name="addressInput">Seller address</string>
     <string name="totalPrice">Total Price </string>
     <string name="productQuantity">Product Quantity</string>
-    <string name="unverify">My Un-Verified Products</string>
+    <string name="unverify">My Products</string>
     <string name="proState">Product Status</string>
 
     <string name="sellerLogout">Logout</string>
