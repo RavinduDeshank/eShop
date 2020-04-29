@@ -22,6 +22,8 @@
             android:textAlignment="center"
             android:layout_marginTop="10dp"/>
 
+    </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/admin_products_checklist"
             android:layout_width="match_parent"
@@ -31,6 +33,6 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </RelativeLayout>
+
 
 </RelativeLayout>

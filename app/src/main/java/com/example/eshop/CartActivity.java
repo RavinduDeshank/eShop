@@ -93,7 +93,7 @@ public class CartActivity extends AppCompatActivity {
 //                int oneTypeProductTPrice = ( ( Integer.valueOf( model.getPrice() ) ) ) * Integer.valueOf( model.getQuantity() );
 //                overTotalPrice = overTotalPrice + oneTypeProductTPrice;
 //                txtTotalAmount.setText("Total Price = Rs. " + String.valueOf(overTotalPrice));
-//
+
 
                         cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
