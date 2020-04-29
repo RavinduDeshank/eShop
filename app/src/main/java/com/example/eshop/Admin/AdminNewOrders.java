@@ -69,7 +69,8 @@ public class AdminNewOrders extends AppCompatActivity {
                             }
                         });
 
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        holder.itemView.setOnClickListener(new View.OnClickListener()
+                        {
                             @Override
                             public void onClick(View view)
                             {

@@ -36,6 +36,7 @@ public class AdminMaintainProducts extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_maintain_products);
 
@@ -145,7 +146,8 @@ public class AdminMaintainProducts extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
 
             }
         });
