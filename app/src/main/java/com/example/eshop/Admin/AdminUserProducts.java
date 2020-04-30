@@ -39,7 +39,7 @@ public class AdminUserProducts extends AppCompatActivity {
         productsList.setLayoutManager(layoutManager);
 
         cartListRef = FirebaseDatabase.getInstance().getReference()
-                .child("CartActivity List").child("Admin View").child(userID).child("Products");
+                .child("Cart List").child("Admin View").child(userID).child("Products");
     }
 
     @Override
