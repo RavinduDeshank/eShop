@@ -48,6 +48,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     RecyclerView.LayoutManager layoutManager;
 
     private String type = "";
+    private String status = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +111,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
         return true;
     }
@@ -126,9 +126,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     protected void onStart() {
         super.onStart();
+
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef, Products.class)
+                .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
@@ -136,6 +137,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
+
 
                         holder.txtproductName.setText(model.getPname());
                         holder.txtproductDescription.setText(model.getDescription());
