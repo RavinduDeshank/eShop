@@ -89,7 +89,7 @@ public class Product_Details extends AppCompatActivity {
         SimpleDateFormat curretTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = curretTime.format(calForDate.getTime());
 
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartActivity List");
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         final HashMap<String,Object> cartMap = new HashMap<>();
         cartMap.put("pid",productID);
@@ -117,7 +117,7 @@ public class Product_Details extends AppCompatActivity {
 
                                             if (task.isSuccessful()){
 
-                                                Toast.makeText(Product_Details.this,"Add to the CartActivity",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Product_Details.this,"Added to Cart List",Toast.LENGTH_SHORT).show();
 
                                                 Intent intent = new Intent(Product_Details.this,Home.class);
                                                 startActivity(intent);

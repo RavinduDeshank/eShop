@@ -25,9 +25,14 @@
     <string name="passwordInput">Seller password</string>
     <string name="addressInput">Seller address</string>
     <string name="totalPrice">Total Price </string>
+    <string name="next">Next </string>
     <string name="productQuantity">Product Quantity</string>
+
+    <string name="productPrice">Product Price</string>
+
     <string name="unverify">My Products</string>
     <string name="proState">Product Status</string>
+
 
     <string name="sellerLogout">Logout</string>
     <string name="sellerAdd">Add New Product</string>

@@ -59,24 +59,13 @@
         android:layout_below="@+id/product_price_details"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true">
-
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/add_product_to_cart"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:elevation="6dp"-->
-<!--        android:backgroundTint="@android:color/white"-->
-<!--        android:src="@drawable/nav_cart"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_margin="15dp"/>-->
     <Button
         android:id="@+id/pd_add_to_cat_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary_dark"
+        android:background="@color/colorPrimaryDark"
         android:layout_margin="15dp"
         android:layout_alignParentBottom="true"
         android:text="@string/addCart"
