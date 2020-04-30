@@ -31,7 +31,7 @@ public class SellerProductCategory extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(SellerProductCategory.this, Home.class);
+                Intent intent = new Intent(SellerProductCategory.this, SellerHomeActivity.class);
                 intent.putExtra("Admin", "Admin");
                 startActivity(intent);
             }

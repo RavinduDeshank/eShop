@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.eshop.Admin.AdminMaintainProducts;
 import com.example.eshop.Admin.CheckNewProduct;
+import com.example.eshop.Home;
 import com.example.eshop.MainActivity;
 import com.example.eshop.Model.Products;
 import com.example.eshop.R;
@@ -118,6 +120,10 @@ public class SellerHomeActivity extends AppCompatActivity
 
                                         }
                                         if (which == 1){
+
+                                            Intent intent = new Intent(SellerHomeActivity.this, AdminMaintainProducts.class);
+                                            intent.putExtra("pid", products.getPid());
+                                            startActivity(intent);
 
                                         }
                                     }
