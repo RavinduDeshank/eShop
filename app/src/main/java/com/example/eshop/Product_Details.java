@@ -140,7 +140,7 @@ public class Product_Details extends AppCompatActivity {
                     Products products = dataSnapshot.getValue(Products.class);
 
                     productName.setText(products.getPname());
-                    productPrice.setText("Rs."+products.getPrice());
+                    productPrice.setText("Rs."+products.getPrice()+".00");
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
                 }

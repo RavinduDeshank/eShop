@@ -57,7 +57,7 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                txtTotalAmount.setText( "Total Price : $"+ String.valueOf(overTotalPrice));
+                txtTotalAmount.setText( "Total Price : Rs."+ String.valueOf(overTotalPrice)+".00");
 
                 Intent intent=new Intent(CartActivity.this, ConfirmFinalOrder.class);
                 intent.putExtra("Total Price", String.valueOf(overTotalPrice));
@@ -88,11 +88,11 @@ public class CartActivity extends AppCompatActivity {
                     protected void onBindViewHolder( @NonNull CartViewHolder holder, int position, @NonNull final Cart model)
                     {
                         holder.txtProductQuantity.setText("Quantity = " + model .getQuantity());
-                        holder.txtProductPrice.setText("Price = "+ model.getPrice() + "$");
+                        holder.txtProductPrice.setText("Price = "+ model.getPrice()+".00");
                         holder.txtProductName.setText(model.getPname());
 
-                        int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
-                        overTotalPrice = overTotalPrice + oneTypeProductTPrice;
+//                        int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
+//                        overTotalPrice = overTotalPrice + oneTypeProductTPrice;
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -176,7 +176,7 @@ public class CartActivity extends AppCompatActivity {
 
                     if(shippingState.equals("shipped"))
                     {
-                        txtTotalAmount.setText("Dear" + userName + "\n Your order is shipeed successfully.");
+                        txtTotalAmount.setText("Dear" + userName + "\n Your order is shipped successfully.");
                         recyclerView.setVisibility(View.GONE);
 
                         txtMsg1.setVisibility(View.VISIBLE);
