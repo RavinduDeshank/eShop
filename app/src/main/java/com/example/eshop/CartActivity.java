@@ -39,7 +39,6 @@ public class CartActivity extends AppCompatActivity {
 
     private int overTotalPrice = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
