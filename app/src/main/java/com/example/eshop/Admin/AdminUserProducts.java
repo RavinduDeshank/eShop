@@ -39,7 +39,7 @@ public class AdminUserProducts extends AppCompatActivity {
         productsList.setLayoutManager(layoutManager);
 
         cartListRef = FirebaseDatabase.getInstance().getReference()
-                .child("CartActivity List").child("Admin View").child("userID").child("Products");
+                .child("CartActivity List").child("Admin View").child(userID).child("Products");
     }
 
     @Override
@@ -56,10 +56,9 @@ public class AdminUserProducts extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model)
             {
                 holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
-                holder.txtProductPrice.setText("Price = " + model.getPrice());
+                holder.txtProductPrice.setText("Price = Rs." + model.getPrice());
                 holder.txtProductName.setText("Product = "+model.getPname());
             }
-
             @NonNull
             @Override
             public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)

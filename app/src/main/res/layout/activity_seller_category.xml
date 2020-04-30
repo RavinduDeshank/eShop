@@ -117,7 +117,6 @@
             android:layout_marginStart="16dp"
         />
     </LinearLayout>
-
     <Button
         android:id="@+id/maintain_btn"
         android:layout_width="match_parent"
@@ -132,36 +131,5 @@
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/check_orders_btn"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/maintain_btn"
-        android:background="@color/colorPrimaryDark"
-        android:text="Check New Orders"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/admin_logout_btn"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/check_orders_btn"
-        android:background="@color/colorPrimaryDark"
-        android:text="Logout"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:textAllCaps="false"/>
-
 
 </RelativeLayout>

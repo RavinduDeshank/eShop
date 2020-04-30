@@ -72,7 +72,8 @@ public class Product_Details extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart()
+    {
         super.onStart();
 
         CheckOrderState();

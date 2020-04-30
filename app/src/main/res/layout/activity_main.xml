@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="100dp"
         android:layout_marginTop="110dp"
-        android:text="THE BEST WAY OF SHOPPING"
+        android:text="THE BEST WAY OF SHOPPING..."
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"

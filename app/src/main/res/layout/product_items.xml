@@ -51,7 +51,6 @@
             android:textSize="16dp"
             android:textColor="@color/colorPrimary"/>
 
-
     </RelativeLayout>
 
 

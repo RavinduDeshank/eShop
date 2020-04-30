@@ -47,7 +47,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-
     private String type = "";
 
     @Override
@@ -56,15 +55,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         setContentView(R.layout.activity_home);
 
         Intent intent = getIntent();
-        Bundle bundel = intent.getExtras();
-        if (bundel != null)
+        Bundle bundle = intent.getExtras();
+        if (bundle != null)
         {
             type = getIntent().getExtras().get("Admin").toString();
         }
+        Paper.init(this);
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-        Paper.init(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
